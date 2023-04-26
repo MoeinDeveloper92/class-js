@@ -1,21 +1,33 @@
+// First I am going to create the foudation of the class
+// First you need to install Live server extension in order to see the result of your action
 class Car {
     constructor(doors, engine, color) {
+        // below are properties of the Car
         this.doors = doors
         this.engine = engine
         this.color = color
     }
-
-    show(newCar) {
-        for (let key in newCar) {
-            console.log(`${key}:${newCar[key]}`)
-        }
+    carStats() {
+        return `This car has ${this.doors} doors, a ${this.engine} 
+        ,and a beautigul ${this.color} Color`
     }
+
 }
 
-const newCar = new Car(4, 'V6', 'Gray')
+let show = true
+const cx5 = new Car(4, 'V6', 'Black')
+const para = document.querySelector('.para')
+const btn = document.querySelector('button')
 
-newCar.show(newCar)
-// bellow we show how to make use of object literal
-// we have created another instance of Class
 
-
+btn.addEventListener('click', e => {
+    para.textContent = show ? cx5.carStats() : ""
+    // bellow we set a locker in order to to switch te text
+    setTimeout(() => {
+        if (show) {
+            show = false
+        } else {
+            show = true
+        }
+    }, 1)
+})
